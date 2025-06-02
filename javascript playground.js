@@ -243,3 +243,16 @@ if (haslicense && hasCar) {
 const ageee = 49;
 const canVote = ageee >= 50 ? "Yes" : "No";
 console.log(canVote);
+
+// Cheatsheet
+// === : exactly equal (checks type too)
+// !== : not equal
+// >   : greater than
+// <   : less than
+// >=  : greater than or equal
+// <=  : less than or equal
+
+// 5. LOGICAL OPERATORS
+// && : AND (both must be true)
+// || : OR (at least one must be true)
+// !  : NOT (reverses true/false)
