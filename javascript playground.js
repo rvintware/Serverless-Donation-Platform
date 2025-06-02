@@ -197,6 +197,49 @@ persona.phoneNumber = "123";
 delete persona.age;
 console.log(persona);
 
-if (persona.age) {
+if (persona.email) {
     console.log("Has email")
 }
+
+// conditional logic - making decisions
+const agee = 18;
+
+if (agee >= 18) {
+    console.log("You are an adult");
+}
+
+if (agee >= 22) {
+    console.log("You are fly!")
+} else {
+    console.log("You cannot fly!")
+};
+
+// if...else if...else
+const score = 85;
+
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >=80) {
+    console.log("Grade: B");
+} else if (score >=70) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: F");
+}
+
+// comparison operators
+const haslicense = true;
+const hasCar = false;
+
+if (haslicense && hasCar) {
+    console.log("You can drive");
+} else if (haslicense && !hasCar) {
+    console.log("You can drive but don't have a car");
+} else {
+    console.log("You need a license first");
+}
+
+// shorthard if/else
+const ageee = 49;
+const canVote = ageee >= 50 ? "Yes" : "No";
+console.log(canVote);
