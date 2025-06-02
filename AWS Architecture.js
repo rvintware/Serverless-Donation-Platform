@@ -47,3 +47,45 @@ exports.handler = async (event) => {
 API Gateway: $3.50 per 1M requests
 Total for 1000 donations/month: ~$0.10
 Traditional server: $5-50/month minimum */
+
+// Traditional Server vs Lambda (Serverless)
+// EC2
+/*Pros:
+- Full control
+- Predictable performance
+- Can run anything
+
+Cons:
+- Pay 24/7 even if idle
+- Must handle scaling
+- You manage security patches
+- Need load balancers for high availability
+
+Cost: ~$50/month minimum*/
+
+// Container (Elastic Container Service/Fargate)
+/*Pros:
+- Better resource usage
+- Easier scaling
+- Good for microservices
+
+Cons:
+- Still some idle cost
+- More complex setup
+- Need orchestration*/
+
+// Serverless (Lambda)
+/*Pros:
+- Pay only for use
+- Automatic scaling
+- No server management
+- Built-in high availability
+
+Cons:
+- Cold starts
+- 15-minute max timeout
+- Limited runtime options
+
+Cost: ~$0 until you have traffic*/
+
+// Decision: For a donation platform, with sporadic traffic, serverless works best.
