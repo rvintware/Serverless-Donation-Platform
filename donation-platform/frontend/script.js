@@ -30,7 +30,7 @@ const cardElement = elements.create('card', {
 cardElement.mount('#card-element');
 cardElement.on('change', function(event) {
     const displayError = document.getElementById('card-errors');
-    if(event.error) {
+    if (event.error) {
         displayError.textContent = event.error.message;
     } else {
         displayError.textContent = '';
@@ -45,7 +45,7 @@ form.addEventListener('submit', async function(event) {
     const amount = document.getElementById('amount').value;
 
     try {
-        const response = await fetch('your api gateway url/create-payment-intent',{
+        const response = await fetch('your api gateway url/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,43 +55,43 @@ form.addEventListener('submit', async function(event) {
             })
         });
         const data = await response.json();
-    const result = await stripe.confirmCardPayment(data.clientSecret, {
-        payment_method: {
-            card: cardElement,
-            billing_details: {
-                name: 'Anonymous Donor',
-                email: 'anonymous@donor.com',
-                phone: '555-1234',
-                address: {
-                    line1: '123 Main St',
-                    city: 'New York',
-                    state: 'NY',
-                    postal_code: '10001',
-                    country: 'US',
+        const result = await stripe.confirmCardPayment(data.clientSecret, {
+            payment_method: {
+                card: cardElement,
+                billing_details: {
+                    name: 'Anonymous Donor',
+                    email: 'anonymous@donor.com',
+                    phone: '555-1234',
+                    address: {
+                        line1: '123 Main St',
+                        city: 'New York',
+                        state: 'NY',
+                        postal_code: '10001',
+                        country: 'US',
+                    }
                 }
             }
+        });
+        if (result.error) {
+            document.getElementById('card-errors').textContent = result.error.message;
+            submitButton.disabled = false;
+            submitButton.textContent = 'Donate Now';
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.style.display = 'none';
+                document.getElementById('success-message').classList.remove('hidden');
+            }
         }
-    });
-    if (result.error) {
-        document.getElementById('card-errors').textContent = result.error.message;
-        submitButton.disabled = false;
-        submitButton.textContent = 'Donate Now';
-    } else {
-        if (result.paymentIntent.status === 'succeeded') {
-            form.style.display = 'none';
-            document.getElementById('success-message').classList.remove('hidden');
-        }
-    }
-}   catch (error) {
-        console.error('Error:', error);
-        document.getElementById('card-errors').textContent = 'An error occurred. Please try again.';
-        submitButton.disabled = false;
-        submitButton.textContent = 'Donate Now';
+} catch (error) {
+    console.error('Error:', error);
+    document.getElementById('card-errors').textContent = 'An error occurred. Please try again.';
+    submitButton.disabled = false;
+    submitButton.textContent = 'Donate Now';
 }
-});
-/*What ends up in catch:
-- Network errors (no internet)
-- Server errors (500 status)
-- JSON parsing errors
-- Timeout errors
-- Our coding errors*/
+    });
+    /*What ends up in catch:
+    - Network errors (no internet)
+    - Server errors (500 status)
+    - JSON parsing errors
+    - Timeout errors
+    - Our coding errors*/
