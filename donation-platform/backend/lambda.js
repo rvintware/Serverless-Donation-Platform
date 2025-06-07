@@ -109,6 +109,7 @@ if (require.main === module) {
 
 // Test the handler
     console.log('Testing with:', testEvent);
+    process.env.STRIPE_SECRET_KEY = 'pk_test_51RXPZaPfnr4OQ2VPQjEczNBlmKVVunrSrrfRp8br1ZHi8Amujz2siAeFMEwAxjn1EovLn1Flwk4YWztkRZHQqcRK00kIEEJ1wu'
 
     exports.handler(testEvent)
         .then(response => {
