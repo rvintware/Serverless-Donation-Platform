@@ -1,4 +1,4 @@
-const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY');
+const stripe = Stripe(config.stripePublishableKey);
 /* 1. const = create a constant (can't reassign)
 2. stripe = variable name (lowercase by convention)
 3. Stripe = global function from Stripe's library

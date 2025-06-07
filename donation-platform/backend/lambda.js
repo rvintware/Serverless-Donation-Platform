@@ -1,4 +1,5 @@
-const stripe = require('stripe')('sk_test_YOUR_STRIPE_SECRET_KEY');
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 exports.handler = async (event) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     let body;
@@ -15,9 +16,9 @@ exports.handler = async (event) => {
             body: JSON.stringify({
                 error: 'Invalid request body',
                 details: 'Request body must be valid JSON'
-        })
-    };
-}
+            })
+        };
+    }
 // Validate amount
 const amount = parseInt(body.amount);
 if (!amount || amount < 1 || amount > 10000) {
@@ -33,7 +34,6 @@ if (!amount || amount < 1 || amount > 10000) {
         })
     };
 }
-
 // Create payment intent
 try {
     const paymentIntent = await stripe.paymentIntents.create({
@@ -42,7 +42,7 @@ try {
         metadata: {
             source: 'ocean-charity-website',
             campaign: 'save-the-oceans',
-            tailstamp: new Date().toISOString()
+            timestamp: new Date().toISOString()
         },
         statement_descriptor: 'OCEAN CHARITY',
         description: `Donation of $${amount} to Save the Oceans`
@@ -87,10 +87,10 @@ catch (error) {
             type: error.type,
             requestId: event.requestContext.requestId,
         })
-    };
+    };    
 }
+};
 // Local Testing Setup
-
 if (require.main === module) {
     require('dotenv').config();
 
@@ -99,25 +99,24 @@ if (require.main === module) {
         body: JSON.stringify({ amount: 10}),
         headers: {
             'Content-Type': 'application/json'
-    },
-    httpMethod: 'POST',
-    path: '/create-payment-intent',
-    requestContext: {
-        requestId: 'test-request-123'
-    }
-};
+        },
+        httpMethod: 'POST',
+        path: '/create-payment-intent',
+        requestContext: {
+            requestId: 'test-request-123'
+        }
+    };
 
 // Test the handler
-console.log('Testing with:', testEvent);
+    console.log('Testing with:', testEvent);
 
-exports.handler(testEvent)
-    .then(response => {
-        console.log('Success response:', JSON.stringify(response, null, 2));
-
+    exports.handler(testEvent)
+        .then(response => {
+            console.log('Success response:', JSON.stringify(response, null, 2));
     // Verify response structure
-        const body = JSON.parse(response.body);
-        console.log('Client secret:', body.clientSecret);
-    })
+            const body = JSON.parse(response.body);
+            console.log('Client secret:', body.clientSecret);
+        })
     .catch(error => {
     console.error('Handler error:', error);
     });
