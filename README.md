@@ -1,4 +1,4 @@
-<h1> Serverless Donation Platform that uses AWS Lambda, API Gateway and integrates with Stripe's Payment Intent API and 2 stage commit. </h1>
+<h3> Serverless Donation Platform that uses AWS Lambda, API Gateway and integrates with Stripe's Payment Intent API and 2 stage commit. </h3>
 
 Successful Integration with Stripe and AWS
 
