@@ -1,3 +1,13 @@
+Successful Integration with Stripe and AWS
+<img width="1728" alt="Screenshot 2025-06-08 at 2 05 54 AM" src="https://github.com/user-attachments/assets/5120454b-4183-4e48-b266-f838026fbd60" />
+
+AWS Lambda Setup
+<img width="2536" alt="Screenshot 2025-06-08 at 12 04 55 PM" src="https://github.com/user-attachments/assets/8bac2c45-ade5-425f-a725-447af1acbed3" />
+<img width="2537" alt="Screenshot 2025-06-08 at 12 05 18 PM" src="https://github.com/user-attachments/assets/b93e9a82-fd45-4333-a070-22ba4f855b28" />
+
+AWS API Gateway Setup and successful test
+<img width="2542" alt="Screenshot 2025-06-08 at 12 05 57 PM" src="https://github.com/user-attachments/assets/5e06edec-0ca3-41a7-a800-3485fe6df284" />
+
 User Flow of Serverless Donation Platform:
 1. User enters donation amount and card details
    ↓
