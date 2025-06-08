@@ -1,3 +1,5 @@
+Serverless Donation Platform that uses AWS Lambda, API Gateway and integrates with Stripe's Payment Intent API and 2 stage commit.
+
 Successful Integration with Stripe and AWS
 
 <img width="412" alt="Screenshot 2025-06-08 at 12 10 43 PM" src="https://github.com/user-attachments/assets/090e4620-085f-42a3-afab-005ba43bd666" />
