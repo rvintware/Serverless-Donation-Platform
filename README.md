@@ -1,4 +1,5 @@
 Successful Integration with Stripe and AWS
+<img width="412" alt="Screenshot 2025-06-08 at 12 10 43 PM" src="https://github.com/user-attachments/assets/090e4620-085f-42a3-afab-005ba43bd666" />
 <img width="1728" alt="Screenshot 2025-06-08 at 2 05 54 AM" src="https://github.com/user-attachments/assets/5120454b-4183-4e48-b266-f838026fbd60" />
 
 AWS Lambda Setup
